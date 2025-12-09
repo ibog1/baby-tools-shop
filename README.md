@@ -205,18 +205,12 @@ to update the database schema.
 
 1. **ALLOWED_HOSTS**
 
-In production the application is served from the VM with IP `116.203.194.189` on port `8025`.  
-In `babyshop_app/babyshop/settings.py`:
+Django must be told which hostnames or IP addresses are allowed to serve the application.  
+For a simple setup with an environment variable `SERVER_IP`, you can configure `ALLOWED_HOSTS` as shown in **Usage, Step 2**.  
 
-  
-    ALLOWED_HOSTS = [
-    "116.203.194.189",
-    "127.0.0.1",
-    "localhost",
-    ]
-     
+- For local development, `localhost` and `127.0.0.1` are usually sufficient.  
+- For deployment on a server, add your own server IP or domain name to `ALLOWED_HOSTS` (never commit real IPs or secrets to the repository)
 
-- Replace `116.203.194.189` with your own server IP if you deploy to a different host.
 
 2. **Environment variables**
 
@@ -264,8 +258,8 @@ This section describes how to deploy the application with Docker on your VM (for
 
 4. **Access the application on the VM**
 
-- Application: `http://116.203.194.189:8025`  
-- Admin panel: `http://116.203.194.189:8025/admin`
+- Application: `http://<SERVER_IP>:8025`  
+- Admin panel: `http://<SERVER_IP>:8025/admin`
 
 5. **Create a superuser inside the container (if not already created)**
 
