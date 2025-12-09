@@ -45,33 +45,33 @@ This section explains how to run the project **locally without Docker** for deve
 
    - On Linux/macOS:
 
-     ```
+     ```bash
      source venv/bin/activate
      ```
 
    - On Windows (PowerShell):
 
-     ```
+     ```bash
      venv\Scripts\Activate.ps1
      ```
 
 4. **Install dependencies**
 
-     ```
+     ```bash
      pip install -r requirements.txt
      ```
 
 
 5. **Navigate to the Django project**
 
-     ```
+     ```bash
      cd babyshop_app
      ```
     
 
 6. **Apply migrations**
 
-     ```
+     ```bash
      python manage.py makemigrations
      python manage.py migrate
      ```
@@ -79,7 +79,7 @@ This section explains how to run the project **locally without Docker** for deve
 
 7. **Create a superuser**
    
-     ```
+     ```bash
      python manage.py createsuperuser
      ```
 
@@ -87,9 +87,9 @@ Follow the prompts to set username, email and password.
 
 8. **Run the development server**
 
-     ```
+    ```bash
      python manage.py runserver 0.0.0.0:8025
-     ```
+    ```
 
 - Application: <http://127.0.0.1:8025/>  
 - Admin panel: <http://127.0.0.1:8025/admin>
@@ -108,11 +108,10 @@ Once the server is running (locally or in Docker), you can use the application a
 
 If you add or change models, run:
 
-    
-     ```
+     ```bash 
     python manage.py makemigrations
-    python manage.py migrate
-     ```
+    python manage.py migrate   
+    ```
 
 to update the database schema.
 
@@ -123,7 +122,7 @@ to update the database schema.
 In production the application is served from the VM with IP `116.203.194.189` on port `8025`.  
 In `babyshop_app/babyshop/settings.py`:
 
-     ```
+     ```bash
     ALLOWED_HOSTS = [
     "116.203.194.189",
     "127.0.0.1",
@@ -149,7 +148,7 @@ This section describes how to deploy the application with Docker on your VM (for
 
 1. **Copy or clone the project on the VM**
 
-     ```
+     ```bash
     cd ~/projects
     git clone https://github.com/ibog1/baby-tools-shop.git
     cd baby-tools-shop
@@ -158,7 +157,7 @@ This section describes how to deploy the application with Docker on your VM (for
 
 2. **Build the Docker image**
 
-     ```
+     ```bash
     docker build -t babyshop_app .
      ```
 
@@ -169,7 +168,7 @@ This section describes how to deploy the application with Docker on your VM (for
 
 3. **Run the Docker container**
 
-     ```
+     ```bash
     docker run -d -p 8025:8025 --name babyshop_container babyshop_app
      ```
 
@@ -185,7 +184,7 @@ This section describes how to deploy the application with Docker on your VM (for
 5. **Create a superuser inside the container (if not already created)**
 
 
-     ```
+     ```bash
     docker exec -it babyshop_container python babyshop_app/manage.py createsuperuser
      ```
 
