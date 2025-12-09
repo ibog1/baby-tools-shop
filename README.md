@@ -206,7 +206,7 @@ to update the database schema.
 1. **ALLOWED_HOSTS**
 
 Django must be told which hostnames or IP addresses are allowed to serve the application.  
-For a simple setup with an environment variable `SERVER_IP`, you can configure `ALLOWED_HOSTS` as shown in [Usage, Step 2](# Step 2: Open the settings.py in babyshop_app and add this to allowed host:).
+For a simple setup with an environment variable `SERVER_IP`, you can configure `ALLOWED_HOSTS` as shown in [Usage, Step 2](#step-2-open-the-settingspy-in-babyshop_app-and-add-this-to-allowed-host).
 
 - For local development, `localhost` and `127.0.0.1` are usually sufficient.  
 - For deployment on a server, add your own server IP or domain name to `ALLOWED_HOSTS` (never commit real IPs or secrets to the repository)
