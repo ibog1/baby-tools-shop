@@ -108,10 +108,11 @@ Once the server is running (locally or in Docker), you can use the application a
 
 If you add or change models, run:
 
-     ```bash 
+    
     python manage.py makemigrations
-    python manage.py migrate   
-    ```
+    python manage.py migrate
+    
+        
 
 to update the database schema.
 
@@ -122,13 +123,13 @@ to update the database schema.
 In production the application is served from the VM with IP `116.203.194.189` on port `8025`.  
 In `babyshop_app/babyshop/settings.py`:
 
-     ```bash
+  
     ALLOWED_HOSTS = [
     "116.203.194.189",
     "127.0.0.1",
     "localhost",
     ]
-     ```
+     
 
 - Replace `116.203.194.189` with your own server IP if you deploy to a different host.
 
