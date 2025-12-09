@@ -91,8 +91,8 @@ Follow the prompts to set username, email and password.
      python manage.py runserver 0.0.0.0:8025
     ```
 
-- Application: <http://127.0.0.1:8025/>  
-- Admin panel: <http://127.0.0.1:8025/admin>
+- Application: <http://localhost:8025/>  
+- Admin panel: <http://localhost:8025/admin>
 
 ## Usage
 
@@ -109,8 +109,7 @@ cd baby-tools-shop
 import os
 
 ALLOWED_HOSTS = [
-    os.getenv("SERVER_IP", "127.0.0.1"),
-    "localhost",
+    os.getenv("SERVER_IP", "localhost"),
 ]
 ```
 
@@ -122,7 +121,7 @@ echo "SERVER_IP=<SECRET_IP_ADRESS>" > .env
 
 
 
-### Step 4: Create and run a Docker image 🐳
+### Step 4: Create and run a Docker image 
 Creates a Docker image with the tag `baby-tools-shop` based on the Dockerfile in the current directory (.)
 - docker build: The command to create (build) a Docker image.
 - -t baby-tools-shop: Specifies the name (baby-tools-shop) and optionally a tag (version number) for the image. The -t stands for “tag”.
@@ -133,7 +132,7 @@ docker build -t baby-tools-shop .
 
 
 
-### Step 5: Start Docker container 🐳
+### Step 5: Start Docker container 
 The command `docker run -d --env-file .env -p 8025:8025 --restart=always baby-tools-shop` is used to start a Docker container. Here's a breakdown of each part:
 - `docker run`: Starts a new container based on a Docker image.
 - `-d`: Runs the container in detached mode (in the background), so your terminal stays free.
