@@ -96,20 +96,105 @@ Follow the prompts to set username, email and password.
 
 ## Usage
 
-Once the server is running (locally or in Docker), you can use the application as follows:
+### Step 1: Clone repository
+Change to the desired directory on the server and clone your Git repository:
+```bash
+git clone <REPOSITORY_URL>
+cd baby-tools-shop
+```
 
-- Open the start page to view available product categories and products.  
-- Use the navigation to switch between pages (home, categories, login/logout, etc.).  
-- Log in with your superuser account or a normal user account.  
-- As an admin user, open `/admin` to:
-- Create and edit categories  
-- Create and edit products (including images)  
-- Manage users and permissions  
 
-If you add or change models, run:
+### Step 2: Open the settings.py in babyshop_app and add this to allowed host:
+``` python
+import os
 
-    
-    python manage.py makemigrations
+ALLOWED_HOSTS = [
+    os.getenv("SERVER_IP", "127.0.0.1"),
+    "localhost",
+]
+```
+
+
+### Step 3: This command creates a `.env` file and writes the `SERVER_IP` environment variable with the value `<SECRET_IP_ADRESS`. This file is used to store configuration values securely outside the source code.
+``` bash
+echo "SERVER_IP=<SECRET_IP_ADRESS>" > .env
+```
+
+
+
+### Step 4: Create and run a Docker image 🐳
+Creates a Docker image with the tag `baby-tools-shop` based on the Dockerfile in the current directory (.)
+- docker build: The command to create (build) a Docker image.
+- -t baby-tools-shop: Specifies the name (baby-tools-shop) and optionally a tag (version number) for the image. The -t stands for “tag”.
+- . (dot): Specifies the current directory as the context for the build process. Docker searches this directory for a file called Dockerfile, which contains instructions for creating the image.
+``` bash
+docker build -t baby-tools-shop .
+```
+
+
+
+### Step 5: Start Docker container 🐳
+The command `docker run -d --env-file .env -p 8025:8025 --restart=always baby-tools-shop` is used to start a Docker container. Here's a breakdown of each part:
+- `docker run`: Starts a new container based on a Docker image.
+- `-d`: Runs the container in detached mode (in the background), so your terminal stays free.
+- `--env-file .env`: Loads environment variables from the `.env` file into the container.
+- `-p 8025:8025`: Maps port 8025 on your machine to port 8025 inside the container, making the service available at `http://localhost:8025`.
+- `--restart=always`: Ensures that the container automatically restarts in the following cases:
+  - If the container crashes, it is restarted immediately.
+  - If the Docker service restarts, the container is started again.
+  - If the server/machine reboots, the container starts automatically with the system.
+  - **Exception:** If the container is manually stopped using `docker stop <container-id>`, it will not restart until manually started again.
+- `baby-tools-shop`: The name of the Docker image used to create the container.
+``` bash
+docker run -d --env-file .env -p 8025:8025 --restart=always baby-tools-shop
+```
+
+
+
+### Step 6: Checking the application
+Call the server `IP` with port `8025` in the browser:
+``` bash
+http://<ip_adress>:8025/
+```
+
+
+
+### Step 7: Create a superuser 'Admin'
+1. Find out the container ID
+``` bash
+docker ps
+```
+
+2. This command allows you to start an interactive Bash session inside a running Docker container. Replace `<CONTAINER_ID>` with the actual container ID or name.
+``` bash
+docker exec -it <CONTAINER_ID> /bin/bash
+```
+
+3. Create superuser in Django
+``` bash
+python manage.py createsuperuser
+```
+
+4. Follow the instructions to enter your user `name`, `e-mail` and `password`.
+``` bash
+Enter the required information:
+Username (leave blank to use 'root'): admin
+Email address: admin@test.de
+Password: ********
+Password (again): ********
+Superuser created successfully.
+```
+
+5. Call up the admin panel:
+``` bash
+http://ip_adress:8025/admin
+```
+> [!Note]
+> Log in with the superuser account you just created.
+
+
+
+### Step 8: After you have logged in, you can add some products to avoid seeing a blank page after publication. And to check if it worked.
     python manage.py migrate
     
         
