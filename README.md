@@ -91,8 +91,8 @@ Follow the prompts to set username, email and password.
      python manage.py runserver 0.0.0.0:8025
     ```
 
-- Application: <http://localhost:8025/>  
-- Admin panel: <http://localhost:8025/admin>
+- Application:  ``` http://localhost:8025```
+- Admin panel:  ``` http://localhost:8025/admin```
 
 ## Usage
 
