@@ -30,8 +30,8 @@ This section explains how to run the project **locally without Docker** for deve
 1. **Clone the repository**
 
     ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone <(https://github.com/ibog1/baby-tools-shop/tree/feature/docker-setup)>
+   cd <baby-tools-shop>
    ```
 
 2. **Create and activate a virtual environment**
