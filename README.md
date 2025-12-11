@@ -1,5 +1,8 @@
 # Baby Tools Shop
 
+The **Baby Tools Shop** is a Django-based web application that allows users to browse and manage baby products.  
+The project is containerized with Docker and can be run locally on a developer machine or on a virtual server (VM) using the same Docker image.
+
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
@@ -9,10 +12,6 @@
 5. [Deploying with Docker](#deploying-with-docker)
 6. [Hints](#hints)
 
-## Project Overview
-
-The **Baby Tools Shop** is a Django-based web application that allows users to browse and manage baby products.  
-The project is containerized with Docker and can be run locally on a developer machine or on a virtual server (VM) using the same Docker image.
 
 ### Technologies
 
