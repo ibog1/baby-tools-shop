@@ -18,8 +18,8 @@ The project is containerized with Docker and can be run locally on a developer m
 
 The application uses the following technologies:
 
-- **Python 3.11** as the programming language.  
-- **Django 5.1.2** for the web framework.  
+- **Python** 3.9** as the programming language.  
+- **Django** 4.0.2** for the web framework.  
 - **Docker** for containerization and deployment.  
 - **venv** for managing the local virtual environment.
 
