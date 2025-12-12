@@ -4,12 +4,6 @@ FROM python:3.9-slim
 # Set working directory inside the container
 WORKDIR /app
 
-# Install system dependencies required for Pillow and other packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libjpeg-dev \
-    zlib1g-dev \
-    && rm -rf /var/lib/apt/lists/*
 
 # Copy dependency list and install Python packages
 COPY requirements.txt .
