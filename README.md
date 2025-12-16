@@ -38,6 +38,17 @@ Before you start, make sure the following tools are installed:
    cd baby-tools-shop
    ```
 
+   
+> [!IMPORTANT]
+> Create a `.env` file from `example.env` and adjust the values for your environment.
+> This file contains sensitive data (e.g. secret key, database credentials) and must **not** be committed to the repository.
+
+   ```bash
+   cp example.env .env
+   ```
+then open .env and set your own values
+
+
 2. **Build the Docker image**
 
    ```bash
